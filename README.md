@@ -1,4 +1,4 @@
-minimize-calls
+reduce-args
 ==============
 
 Remove function calls or strip arguments in javascript code. Useful for removing debug messages in a production build.
@@ -18,9 +18,9 @@ invariant(isArray(obj));
 
 ### Usage
 ````js
-var minimizeCalls = require('minimize-calls');
+var reduceArgs = require('reduce-args');
 
-var min = minimizeCalls(testCode, [
+var min = reduceArgs(testCode, [
 	// removes all console.*() calls
 	{ test: /^console./, removeCall: true },
 	
@@ -40,4 +40,4 @@ console.log(min.code);
 See the [`tests`](tests/index.js) for more details.
 
 ### Install
-`npm install minimize-calls`
+`npm install reduce-args`

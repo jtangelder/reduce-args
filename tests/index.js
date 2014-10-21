@@ -1,11 +1,11 @@
-var minimizeCalls = require('../index');
+var reduceArgs = require('../index');
 var assert = require("assert");
 var fs = require("fs");
 
 function min(code, conf) {
     conf = conf || {};
     conf.test = conf.test || /^fn$/;
-    var result = minimizeCalls(code, [conf]).code;
+    var result = reduceArgs(code, [conf]).code;
     return result;
 }
 
@@ -17,7 +17,7 @@ function spaceless(str) {
     return str.replace(/\s+/g, '');
 }
 
-describe('minimizeCalls', function() {
+describe('reduceArgs', function() {
     var code = 'fn(true, true, false);';
 
     it('should remove arguments at the given indexes', function() {
@@ -46,7 +46,7 @@ describe('minimizeCalls', function() {
         var testCode = 'console.log(true); invariant(true, "this message should be stripped");';
         var expectCode = 'invariant(true);';
 
-        var resultCode = minimizeCalls(testCode, [
+        var resultCode = reduceArgs(testCode, [
             { test: /^console./, removeCall: true },
             { test: /^invariant$/, keepArgs: [0] }
         ]).code;
@@ -58,7 +58,7 @@ describe('minimizeCalls', function() {
         var testCode = getSource('/full.test.js');
         var expectCode = getSource('/full.expect.js');
 
-        var resultCode = minimizeCalls(testCode, [
+        var resultCode = reduceArgs(testCode, [
             { test: /^console\./, removeCall: true },
             { test: /^invariant$/, keepArgs: [0] }
         ]).code;

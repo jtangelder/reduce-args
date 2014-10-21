@@ -1,6 +1,6 @@
 {
-  "name": "minimize-calls",
-  "version": "0.0.3",
+  "name": "reduce-args",
+  "version": "0.0.1",
   "description": "Remove or strip arguments from function calls in and with JavaScript",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jtangelder/minimize-calls.git"
+    "url": "https://github.com/jtangelder/reduce-args.git"
   },
   "author": "J. Tangelder",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jtangelder/minimize-calls/issues"
+    "url": "https://github.com/jtangelder/reduce-args/issues"
   },
-  "homepage": "https://github.com/jtangelder/minimize-calls",
+  "homepage": "https://github.com/jtangelder/reduce-args",
   "dependencies": {
     "recast": "^0.8.0"
   },
