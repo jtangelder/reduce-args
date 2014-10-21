@@ -1,8 +1,6 @@
 (function(window) {
     var obj = {};
-    function test() {
-        ;
-    }
+    function test() {}
 
     function invariant(condition, msg) {
         if(!condition) {
