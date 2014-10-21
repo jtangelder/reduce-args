@@ -1,5 +1,6 @@
 var minimizeCalls = require('../index');
 var assert = require("assert");
+var fs = require("fs");
 
 function min(code, conf) {
     conf = conf || {};
@@ -34,11 +35,26 @@ describe('minimizeCalls', function() {
 
     it('should remove the console function calls and drop the invariant msg.', function() {
         var testCode = 'console.log(true); invariant(true, "this message should be stripped");';
-        var resultCode = '; invariant(true);';
+        var expectCode = '; invariant(true);';
 
         assert.equal(minimizeCalls(testCode, [
             { test: /^console./, removeCall: true },
             { test: /^invariant$/, keepArgs: [0] }
-        ]).code, resultCode);
+        ]).code, expectCode);
+    });
+
+    it('should match the expected output.', function() {
+        function getSource(file) {
+            return fs.readFileSync(__dirname + file, {encoding:'utf8'})
+                .replace(/\s+/g, ' ');
+        }
+
+        var testCode = getSource('/full.test.js');
+        var expectCode = getSource('/full.expect.js');
+
+        assert.equal(minimizeCalls(testCode, [
+            { test: /^console\./, removeCall: true },
+            { test: /^invariant$/, keepArgs: [0] }
+        ]).code, expectCode);
     });
 });
