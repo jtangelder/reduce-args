@@ -11,13 +11,23 @@ Uses [Recast](https://github.com/benjamn/recast) for parsing the code.
 var minimizeCalls = require('minimize-calls');
 
 var min = minimizeCalls(testCode, [
-	{ test: /^console./, removeCall: true },	// removes all console.*() calls
-	{ test: /^invariant$/, keepArgs: [0] }		// keeps only the argument at index 0 at calls to invariant()
-	{ test: /^invariant$/, keepArgs: [] }		// drops all arguments
-	{ test: /^invariant$/, stripArgs: [1] }		// drops the argument at index 1, and keeps the rest
+	// removes all console.*() calls
+	{ test: /^console./, removeCall: true },
+	
+	// keeps only the argument at index 0 at calls to invariant()
+	{ test: /^invariant$/, keepArgs: [0] },
+	
+	// drops all arguments to invariant()
+	{ test: /^invariant$/, keepArgs: [] },
+	
+	// drops the argument at index 1, and keeps the rest
+	{ test: /^invariant$/, stripArgs: [1] }
 ]);
 
 console.log(min.code);
 ````
 
 See the [`tests`](tests/index.js) for more details.
+
+### Install
+`npm install minimize-calls`
