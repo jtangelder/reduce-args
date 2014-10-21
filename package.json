@@ -1,10 +1,10 @@
 {
   "name": "minimize-calls",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Remove or strip arguments from function calls in and with JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/index.js"
+    "test": "node ./node_modules/mocha/bin/mocha tests/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/jtangelder/minimize-calls",
   "dependencies": {
     "recast": "^0.8.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.5"
   }
 }
