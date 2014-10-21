@@ -10,7 +10,11 @@ function min(code, conf) {
 }
 
 function getSource(file) {
-    return fs.readFileSync(__dirname + file, {encoding:'utf8'}).replace(/\s+/g, ' ');
+    return fs.readFileSync(__dirname + file, {encoding:'utf8'});
+}
+
+function spaceless(str) {
+    return str.replace(/\s+/g, '');
 }
 
 describe('minimizeCalls', function() {
@@ -59,6 +63,6 @@ describe('minimizeCalls', function() {
             { test: /^invariant$/, keepArgs: [0] }
         ]).code;
 
-        assert.equal(resultCode, expectCode);
+        assert.equal(spaceless(resultCode), spaceless(expectCode));
     });
 });
