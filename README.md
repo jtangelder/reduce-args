@@ -6,6 +6,16 @@ The next step after using this small tool, would be to compress the code with so
  
 Uses [Recast](https://github.com/benjamn/recast) for parsing the code.
 
+### Example
+````js
+invariant(isArray(obj), "obj should be an array!");
+````
+...becomes...
+ 
+````js
+invariant(isArray(obj));
+````
+
 ### Usage
 ````js
 var minimizeCalls = require('minimize-calls');
