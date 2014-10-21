@@ -1,6 +1,6 @@
 {
   "name": "minimize-calls",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Remove or strip arguments from function calls in and with JavaScript",
   "main": "index.js",
   "scripts": {
